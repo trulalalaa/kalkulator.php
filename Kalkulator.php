@@ -1,27 +1,42 @@
-<?php
-    //Tampung inputan tectfield dengan vaiabel
+<?php  
     $angka1 = @$_POST['angka1'];
     $angka2 = @$_POST['angka2'];
     $hasil = @$_POST['hasil'];
-
-    //Uji jika tombol diklik 
-    if(isset($_POST['btambah']))
-    {
+ 
+    if(isset($_POST['btambah'])) {
+        if (is_numeric($angka1) && is_numeric($angka2)){
         $hasil = $angka1 + $angka2;
+        }
+        else {
+        $hasil = "Invalid input";
+        }    
     }
-    else if(isset($_POST['bkurang']))
-    {
+    if(isset($_POST['bkurang'])) {
+        if (is_numeric($angka1) && is_numeric($angka2)){
         $hasil = $angka1 - $angka2;
+        }
+        else {
+        $hasil = "Invalid input";
+        }    
     }
-    else if(isset($_POST['bkali']))
-    {
+    if(isset($_POST['bkali'])) {
+        if (is_numeric($angka1) && is_numeric($angka2)){
         $hasil = $angka1 * $angka2;
+        }
+        else {
+        $hasil = "Invalid input";
+        }     
     }
-    elseif(isset($_POST['bagi'])) {
-        if ($angka2 == 0) {
-            $hasil = "Undefined";
+   
+    if (isset($_POST['bagi'])) {
+        if (is_numeric($angka1) && is_numeric($angka2)) {
+            if ($angka2 == 0) {
+                $hasil = "Undefined";
+            }else {
+                $hasil = $angka1 / $angka2;
+            }
         } else {
-            $hasil = $angka1 / $angka2;
+            $hasil = "Invalid input";
         }
     }
 ?>
